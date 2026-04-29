@@ -55,7 +55,7 @@ for file in *.fastq.gz; do
     if [[ -f "$file" ]]; then
         base=$(basename "$file" _trimmed.fastq.gz)
         echo "Trimming: $file"
-        gunzip -c "$file" | NanoFilt -q 15 -l 800 --maxlength 1600 --tailcrop 50 --headcrop 50 > "${base}_filtered_crop_q15.fastq"
+        gunzip -c "$file" | NanoFilt -q 15 -l xxx --maxlength xxxx --tailcrop 50 --headcrop 50 > "${base}_filtered_crop_q15.fastq"
     fi
 done
 
@@ -65,4 +65,34 @@ done
 #################################
 ```
 # 2) Select representative sequences assign taxonomy and construct the OTU table
+##  1.Orient the reads and remove chimeras
+```
+vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
+##############################
+ref_db=silva_16S.fasta for 16S
+ref_db=silva_16S.fasta for 16S
+##############################
 
+```
+```
+vsearch --uchime_ref input.fasta \
+        --nonchimeras output.good.fasta \
+        --chimeras output.chimeras.fasta \
+        --db ref_db.fasta
+##############################
+ref_db=silva_16S.fasta for 16S
+ref_db=silva_16S.fasta for 16S
+##############################
+
+```
+## 2.Amplicon Sorter
+######################################################################################################################
+Use Amplicon_sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
+#######################################################################################################################
+```
+./amplicon_sorter.py   -i all_oriented.fasta -o amplicon_clustered_oriented -np 64   -min xxx   -max xxxx -maxr=xxxxx --allreads
+########################################
+-min 800 --max 1600 for 16S -maxr=
+-min 800 --max 1900 for 18S -maxr=
+########################################
+```
