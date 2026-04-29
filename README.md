@@ -1,6 +1,6 @@
 # meta-barcoding-sequencing from England Rockpools.
 Bionformatic pipeline for meta-barcoding seequencing.
-# Trimming and quality control
+# 1) Trimming and quality control
 ## 1.CUTADAPT
 ```
 #######################################################################
@@ -56,5 +56,5 @@ done
 -l 800 --maxlength 1900 for 18S
 #################################
 ```
-# Select representative sequences assign taxonomy and construct the OTU table
+# 2) Select representative sequences assign taxonomy and construct the OTU table
 
