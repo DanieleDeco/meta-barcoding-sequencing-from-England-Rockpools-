@@ -65,7 +65,7 @@ done
 #################################
 ```
 # 2) Select representative sequences assign taxonomy and construct the OTU table
-##  1.Orient the reads and remove chimeras
+##  1. Use vserach to orient the reads and to remove the chimeras
 ```
 vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
 ##############################
