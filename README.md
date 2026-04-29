@@ -96,3 +96,5 @@ Use Amplicon_sorter to cluster filtered reads into groups of closely related spe
 -min 800 --max 1900 for 18S -maxr=
 ########################################
 ```
+# Publication
+Microbial community and biodiversity meta-barcoding sequencing data from rocky shorelines on the northeast and southwest coasts of England.  
