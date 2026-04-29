@@ -11,10 +11,18 @@ Bionformatic pipeline for meta-barcoding seequencing.
 #!/bin/bash
 
 # Forward and reverse primers (IUPAC codes supported)
+############for 16S###########
 PRIMERF="AGAGTTTGATCMTGGCTCAG"
 PRIMERR="RGYTACCTTGTTACGACTT"
 PRIMERFC="CTGAGCCAKGATCAAACTCT"
 PRIMERRC="AAGTCGTAACAAGGTARCY"
+############for 16S###########
+
+############for 18S###########
+
+
+
+############for 18S###########
 
 # Loop over all FASTQ.gz files in the current directory
 for file in *.fastq.gz; do
