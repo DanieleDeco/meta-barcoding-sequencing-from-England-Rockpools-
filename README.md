@@ -1,10 +1,10 @@
-# meta-barcoding-sequencing from England Rockpools.
-Bionformatic pipeline for meta-barcoding seequencing.
+# Metabarcoding-sequencing from England rock pools.
+Bionformatic pipeline for metabarcoding sequencing.
 # 1) Trimming and quality control
 ## 1.CUTADAPT
 ```
 #######################################################################
-  1. Use cutadapt to select the sequences that have the desired primers
+  1. Use Cutadapt to select the sequences that contains the target primers
 #######################################################################
 
 
@@ -47,7 +47,7 @@ done
 
 ```
 ########################################################
-  2.Use nanofilt to quality trimm the selected sequences
+  2.Use NanoFilt to quality trimm the selected sequences
 ########################################################
 
 #!/bin/bash
@@ -65,10 +65,10 @@ done
 -l 800 --maxlength 1900 for 18S
 #################################
 ```
-# 2) Select representative sequences assign taxonomy and construct the OTU table
+# 2) Select representative sequences, taxonomic assignemnet and OTU table construction
 ##  1.VSEARCH
 #############################################################
-1. Use vserach to orient the reads and to remove the chimeras
+1. Use VSEARCH to orient reads and to remove the chimeras
 #############################################################
 ```
 vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
@@ -91,7 +91,7 @@ ref_db=silva_18S.fasta for 18S
 ```
 ## 2.Amplicon Sorter
 ###########################################################################################################
-2.Use Amplicon_sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
+2.Use Amplicon Sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
 ###########################################################################################################
 ```
 ./amplicon_sorter.py   -i all_oriented.fasta -o amplicon_clustered_oriented -np 64   -min xxx   -max xxxx -maxr=xxxxx --allreads
@@ -115,5 +115,32 @@ ref_db=silva_18S.fasta for 18S
 ##############################
 
 ```
+## 4.Create an OTU table  
+#####################################
+3. Use VSERACH to create an OTU table 
+#####################################
+1.Rename the fasta header of each fasta file >barcode01_1;Sample=barcode01
+```
+#!/bin/bash
+# Step 1: rename sequences and append sample=barcode to each header
+
+for f in *_combined_filtered_crop_q15.fasta; do
+    sample=$(basename "$f" "_combined_filtered_crop_q15.fasta")
+    renamed="${sample}_renamed.fasta"
+
+    # 1. Rename: >SAMPLE_1, SAMPLE_2, ...
+    awk -v prefix="$sample" '/^>/ {i++; print ">"prefix"_"i} !/^>/' "$f" > "$renamed"
+
+    # 2. Append ;sample=barcode to each header
+    awk -v barcode="$sample" '/^>/{sub(/$/, ";sample=" barcode)} 1' "$renamed" > "${sample}_renamed_append.fasta"
+
+    echo "Processed: $f -> ${sample}_renamed_append.fasta"
+done
+```
+2.Map filtered reads to reference FASTA
+```
+vsearch -usearch_global all_reads.fasta -db consensus_ref_seqs.fasta -strand both -id 0.90 -otutabout otu.tsv
+```
+
 # Publication
 Microbial community and biodiversity meta-barcoding sequencing data from rocky shorelines on the northeast and southwest coasts of England.  
