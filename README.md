@@ -66,7 +66,10 @@ done
 #################################
 ```
 # 2) Select representative sequences assign taxonomy and construct the OTU table
-##  1. Use vserach to orient the reads and to remove the chimeras
+##  1.VSEARCH
+#############################################################
+1. Use vserach to orient the reads and to remove the chimeras
+#############################################################
 ```
 vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
 ##############################
@@ -88,7 +91,7 @@ ref_db=silva_18S.fasta for 18S
 ```
 ## 2.Amplicon Sorter
 ###########################################################################################################
-Use Amplicon_sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
+2.Use Amplicon_sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
 ###########################################################################################################
 ```
 ./amplicon_sorter.py   -i all_oriented.fasta -o amplicon_clustered_oriented -np 64   -min xxx   -max xxxx -maxr=xxxxx --allreads
@@ -96,6 +99,21 @@ Use Amplicon_sorter to cluster filtered reads into groups of closely related spe
 -min 800 --max 1600 for 16S -maxr=
 -min 800 --max 1900 for 18S -maxr=
 ########################################
+```
+## 3.VSEARCH taxonomy 
+##################################################################################################
+3. Use VSERACH to assign taxonomy to the consensus sequences against a reference database (SILVA_nr99)
+###################################################################################################
+```
+vsearch -usearch_global otus.fa -db ref_db\
+  -id 0.90 \
+  --output_no_hits \ #### keep the nohit in the output #####
+  -blast6out taxonomy_assignment_silva.txt
+##############################
+ref_db=silva_16S.fasta for 16S
+ref_db=silva_18S.fasta for 18S
+##############################
+
 ```
 # Publication
 Microbial community and biodiversity meta-barcoding sequencing data from rocky shorelines on the northeast and southwest coasts of England.  
