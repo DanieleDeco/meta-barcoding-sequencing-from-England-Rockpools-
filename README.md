@@ -1,4 +1,4 @@
-# Metabarcoding sequencing from two Marine Rocky Shoreline.
+# Metabarcoding sequencing from two Marine Rocky Shorelines.
 Bionformatic pipeline for metabarcoding sequencing.
 # 1) Trimming and quality control
 ## 1.CUTADAPT
