@@ -3,9 +3,9 @@ Bionformatic pipeline for metabarcoding sequencing.
 # 1) Trimming and quality control
 ## 1.CUTADAPT
 ```
-#######################################################################
+##########################################################################
   1. Use Cutadapt to select the sequences that contains the target primers
-#######################################################################
+##########################################################################
 
 
 #!/bin/bash
@@ -69,7 +69,7 @@ done
 ##  1.VSEARCH
 #############################################################
 1. Use VSEARCH to orient reads and to remove the chimeras
-#############################################################
+############################################################
 ```
 vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
 ##############################
