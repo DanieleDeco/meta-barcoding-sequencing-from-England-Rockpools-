@@ -1,4 +1,4 @@
-# Metabarcoding-sequencing from England rock pools.
+# Metabarcoding sequencing from two Marine Rocky Shoreline.
 Bionformatic pipeline for metabarcoding sequencing.
 # 1) Trimming and quality control
 ## 1.CUTADAPT
@@ -149,7 +149,7 @@ done
 vsearch -usearch_global all_reads.fasta -db consensus_ref_seqs.fasta -strand both -id 0.90 -otutabout otu.tsv
 ```
 
-The taxomy and the OTU table files can be now imported in R or be used to generate a BIOM file for other pipelines
+The taxonomy and OTU table files can now be imported into R or converted into a BIOM file for use in other pipelines.
 
 # Publication
 Microbial community and biodiversity meta-barcoding sequencing data from rocky shorelines on the northeast and southwest coasts of England.  
