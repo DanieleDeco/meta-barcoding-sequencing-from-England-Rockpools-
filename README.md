@@ -67,10 +67,12 @@ done
 ```
 # 2) Select representative sequences, taxonomic assignemnet and OTU table construction
 ##  1.VSEARCH
+
+```
 #############################################################
 1. Use VSEARCH to orient reads and to remove the chimeras
 ############################################################
-```
+
 vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
 ##############################
 ref_db=silva_16S.fasta for 16S
@@ -90,10 +92,11 @@ ref_db=silva_18S.fasta for 18S
 
 ```
 ## 2.Amplicon Sorter
+```
 ###########################################################################################################
 2.Use Amplicon Sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
 ###########################################################################################################
-```
+
 ./amplicon_sorter.py   -i all_oriented.fasta -o amplicon_clustered_oriented -np 64   -min xxx   -max xxxx -maxr=xxxxx --allreads
 ########################################
 -min 800 --max 1600 for 16S -maxr=
