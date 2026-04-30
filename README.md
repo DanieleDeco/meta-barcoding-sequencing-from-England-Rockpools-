@@ -101,8 +101,8 @@ Vierstraete, A. R., Braeckman, B. P. (2022). Amplicon_sorter: A tool for referen
 
 ./amplicon_sorter.py   -i all_oriented.fasta -o amplicon_clustered_oriented -np 64   -min xxx   -max xxxx -maxr=xxxxx --allreads
 ########################################
--min 800 --max 1600 for 16S -maxr=
--min 800 --max 1900 for 18S -maxr=
+-min 800 --max 1600 for 16S -maxr=482656
+-min 800 --max 1900 for 18S -maxr=285075
 ########################################
 ```
 ## 3.VSEARCH taxonomy 
