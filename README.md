@@ -144,7 +144,7 @@ for f in *_combined_filtered_crop_q15.fasta; do
     echo "Processed: $f -> ${sample}_renamed_append.fasta"
 done
 ```
-2.Map filtered reads to reference FASTA
+2.Map reads to reference FASTA
 ```
 vsearch -usearch_global all_reads.fasta -db consensus_ref_seqs.fasta -strand both -id 0.90 -otutabout otu.tsv
 ```
