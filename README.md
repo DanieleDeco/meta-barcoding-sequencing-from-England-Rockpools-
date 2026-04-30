@@ -104,10 +104,11 @@ ref_db=silva_18S.fasta for 18S
 ########################################
 ```
 ## 3.VSEARCH taxonomy 
+```
 ##################################################################################################
 3. Use VSERACH to assign taxonomy to the consensus sequences against a reference database (SILVA_nr99)
 ###################################################################################################
-```
+
 vsearch -usearch_global otus.fa -db ref_db\
   -id 0.90 \
   --output_no_hits \ #### keep the nohit in the output #####
@@ -119,11 +120,12 @@ ref_db=silva_18S.fasta for 18S
 
 ```
 ## 4.Create an OTU table  
+```
 #####################################
 3. Use VSERACH to create an OTU table 
 #####################################
 1.Rename the fasta header of each fasta file >barcode01_1;Sample=barcode01
-```
+
 #!/bin/bash
 # Step 1: rename sequences and append sample=barcode to each header
 
