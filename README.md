@@ -1,5 +1,5 @@
 # Metabarcoding sequencing from two Marine Rocky Shorelines.
-Bionformatic pipeline for metabarcoding sequencing.
+Bioinformatic pipeline for metabarcoding sequencing.
 # 1) Trimming and quality control
 ## 1.CUTADAPT
 Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet.journal, 17(1), 10–12. DOI: 10.14806/ej.17.1.200. 
@@ -28,19 +28,19 @@ PRIMERRC="GTAGGTGAACCTGCRG"
 
 # Loop over all FASTQ.gz files in the current directory
 for file in *.fastq.gz; do
-    if [[ -f "$file" ]]; then
-        base=$(basename "$file" .fastq.gz)
-        echo "Trimming: $file"
+if [[ -f "$file" ]]; then
+base=$(basename "$file" .fastq.gz)
+echo "Trimming: $file"
 
-        cutadapt \
-            -g "$PRIMERF...$PRIMERRC" \
-	-g "$PRIMERR...$PRIMERFC" \
-            -o "${base}_trimmed.fastq.gz" \
-            "$file" \
-	--error-rate 0.2 \
-	--cores=40 \
-            --discard-untrimmed
-    fi
+cutadapt \
+-g "$PRIMERF...$PRIMERRC" \
+-g "$PRIMERR...$PRIMERFC" \
+-o "${base}_trimmed.fastq.gz" \
+"$file" \
+--error-rate 0.2 \
+--cores=40 \
+--discard-untrimmed
+fi
 done
 ```
 
@@ -54,11 +54,11 @@ De Coster, W., D’Hert, S., Schultz, D. T., Cruts, M., Van Broeckhoven, C. (201
 #!/bin/bash
 
 for file in *.fastq.gz; do
-    if [[ -f "$file" ]]; then
-        base=$(basename "$file" _trimmed.fastq.gz)
-        echo "Trimming: $file"
-        gunzip -c "$file" | NanoFilt -q 15 -l xxx --maxlength xxxx --tailcrop 50 --headcrop 50 > "${base}_filtered_crop_q15.fastq"
-    fi
+if [[ -f "$file" ]]; then
+base=$(basename "$file" _trimmed.fastq.gz)
+echo "Trimming: $file"
+gunzip -c "$file" | NanoFilt -q 15 -l xxx --maxlength xxxx --tailcrop 50 --headcrop 50 > "${base}_filtered_crop_q15.fastq"
+fi
 done
 
 #################################
