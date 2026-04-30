@@ -2,7 +2,7 @@
 Bionformatic pipeline for metabarcoding sequencing.
 # 1) Trimming and quality control
 ## 1.CUTADAPT
-Ref:Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet.journal, 17(1), 10–12. DOI: 10.14806/ej.17.1.200. 
+Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet.journal, 17(1), 10–12. DOI: 10.14806/ej.17.1.200. 
 ```
 ##########################################################################
   1. Use Cutadapt to select the sequences that contains the target primers
@@ -45,7 +45,7 @@ done
 ```
 
 ## 2.NANOFILT
-
+De Coster, W., D’Hert, S., Schultz, D. T., Cruts, M., Van Broeckhoven, C. (2018) NanoPack: visualizing and processing long-read sequencing data, Bioinformatics, Volume 34, Issue 15, 2666–2669, https://doi.org/10.1093/bioinformatics/bty149.
 ```
 ########################################################
   2.Use NanoFilt to quality trimm the selected sequences
