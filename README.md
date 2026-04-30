@@ -71,7 +71,7 @@ done
 vsearch --orient filtered_q15.fa --db ref_db.fasta --fastaout oriented_q15.fa
 ##############################
 ref_db=silva_16S.fasta for 16S
-ref_db=silva_16S.fasta for 16S
+ref_db=silva_18S.fasta for 18S
 ##############################
 
 ```
@@ -82,7 +82,7 @@ vsearch --uchime_ref input.fasta \
         --db ref_db.fasta
 ##############################
 ref_db=silva_16S.fasta for 16S
-ref_db=silva_16S.fasta for 16S
+ref_db=silva_18S.fasta for 18S
 ##############################
 
 ```
