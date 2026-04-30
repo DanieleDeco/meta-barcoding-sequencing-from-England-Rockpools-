@@ -68,7 +68,7 @@ done
 ```
 # 2) Select representative sequences, taxonomic assignemnet and OTU table construction
 ##  1.VSEARCH
-
+Rognes T, Flouri T, Nichols B, Quince C, Mahé F. VSEARCH: a versatile open-source tool for metagenomics. PeerJ. 2016 Oct 18;4:e2584.
 ```
 #############################################################
 1. Use VSEARCH to orient reads and to remove the chimeras
@@ -93,6 +93,7 @@ ref_db=silva_18S.fasta for 18S
 
 ```
 ## 2.Amplicon Sorter
+Vierstraete, A. R., Braeckman, B. P. (2022). Amplicon_sorter: A tool for reference-free amplicon sorting based on sequence similarity and for building consensus sequences. Ecology and Evolution, 12, e8603. https://doi.org/10.1002/ece3.8603.
 ```
 ###########################################################################################################
 2.Use Amplicon Sorter to cluster filtered reads into groups of closely related species and generate consensus sequences.
@@ -147,6 +148,8 @@ done
 ```
 vsearch -usearch_global all_reads.fasta -db consensus_ref_seqs.fasta -strand both -id 0.90 -otutabout otu.tsv
 ```
+
+The taxomy and the OTU table files can be now imported in R or be used to generate a BIOM file for other pipelines
 
 # Publication
 Microbial community and biodiversity meta-barcoding sequencing data from rocky shorelines on the northeast and southwest coasts of England.  
